@@ -11,37 +11,39 @@
 <link rel="stylesheet" type="text/css" href="assets/css/style.css"> <!-- corrected path to where the file is==same directory as index-->
 </head>
 <body>
+	<div id="topbar">Hangman Game</div>
 
-  <div id="topbar">Hangman Game </div>
-     <div class="container">
+    <div class="container">
       <div class="row">
         <div>
           <h2>Guess the word:</h2>
           <p id="right"></p>
-          <p><span id="remain">9</span> guesses remain</p>
-          <p id="wrong"></p> 
-          
+          <p>
+            <span id="remain">10</span> guesses remain
+          </p>
+          <p id="wrong"></p>
         </div>
       </div>
-
+    </div>
+    <div class="row"></div>
+    <div id="Instruct">
+     <p> This hangman game is about superheroes.  Guess which one it is.</p><p>   You have 9 tries to determine the superhero. If You want to play again, just reload the game.</p>
     </div>
 
-
-
+    
     <script type="text/javascript">
-      var words = ['catwoman', 'wonderwoman', 'flash', 'aquaman', 'ironman', 'superman', 'batman', 'cyborg', 'hawkgirl', 'DrStrange'];
+      var words = ['catwoman', 'wonderwoman', 'flash', 'aquaman', 'ironman', 'superman', 'batman'];
       var win = 0;
       var lose = 0;
       var game = {
-          guessed: [],
-          left: 9,
-          start: function() {
+        guessed: [],
+        left: 9,
+        start: function() {
           this.complete = false;
           this.word = words[Math.floor(Math.random() * words.length)];
           this.$right = document.getElementById('right');
           this.$wrong = document.getElementById('wrong');
           this.$remain = document.getElementById('remain');
-
           this.$right.innerHTML = '_'.repeat(this.word.length);
         },
         guess: function(letter) {
@@ -50,6 +52,8 @@
               this.right(letter); win++;
             } else {
               this.wrong(letter);  lose++;
+             
+              
             }
           }
         },
@@ -65,16 +69,19 @@
           if (this.$right.innerHTML.indexOf('_') < 0) {
             alert('you win!');
             this.complete = true;
+            
           }
         },
         wrong: function(letter) {
           this.guessed.push(letter);
           this.$wrong.innerHTML += ' ' + letter;
           this.left--;
+
           this.$remain.innerHTML = this.left;
 
           if (this.left < 1) {
-            alert('you lose! '+ this.word);
+            alert('you lose!  the word is '+ this.word);
+            console.log("You have " + lose + " misses.");
             this.complete = true;
           }
         }
@@ -83,35 +90,14 @@
       game.start();
 
       document.onkeyup = function(event) {
-      var letter = String.fromCharCode(event.keyCode).toLowerCase();
-        console.log("You typed " + letter);
+        var letter = String.fromCharCode(event.keyCode).toLowerCase();
+        console.log("You typed: " + letter);
         game.guess(letter);
       };
     </script>
-      <footer> 
-      <img src="assets/images/justice_league.jpg" alt="justice league" width="750px">
-        <br> judi perez 2017
-      </footer>
+    	<footer>
+    			judiperez 2017
+    	</footer>
   </body>
-</html>
-
-
-
-</html>
-
-html>
-
- </footer>
-  </body>
-</html>
-
-
-
-</html>
-
-l>
-
-
-
 </html>
 

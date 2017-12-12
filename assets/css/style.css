@@ -1,46 +1,117 @@
-html, body {
+* {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
-	background-color:#4183D7;
-	font-family: Arial, Helvetica, sans-serif;
-	    }
+}      
 
-#topbar{
- 	margin:auto;
- 	margin-top:50px;
- 	color:#FFF;
- 	height:50px;
-	font-size:36px;
- 	width:650px;
-	border-bottom:solid white 3px;
-	background-image: url('wonder_woman.jpg');
+html {
+	overflow-x: hidden; /* For Opera */
+	-webkit-box-shadow:
+		inset #DC7633 0 0 0 5px,
+		inset #18cdf7 0 0 0 1px,
+		inset #2E4053 0 0 0 10px,
+		inset #EBEDEF 0 0 0 11px,
+		inset #AEB6BF 0 0 0 16px,
+		inset #85929E 0 0 0 17px,
+		inset #5D6D7E 0 0 0 22px,
+		inset #2E4053 0 0 0 23px;
+	-moz-box-shadow:
+		inset #DC7633 0 0 0 5px,
+		inset #18cdf7 0 0 0 1px,
+		inset #2E4053 0 0 0 10px,
+		inset #EBEDEF 0 0 0 11px,
+		inset #AEB6BF 0 0 0 16px,
+		inset #85929E 0 0 0 17px,
+		inset #5D6D7E 0 0 0 22px,
+		inset #2E4053 0 0 0 23px;
+	box-shadow:
+		inset #DC7633 0 0 0 5px,
+		inset #18cdf7 0 0 0 1px,
+		inset #2E4053 0 0 0 10px,
+		inset #FFCA28 0 0 0 11px,
+		inset #AEB6BF 0 0 0 16px,
+		inset #85929E 0 0 0 17px,
+		inset #5D6D7E 0 0 0 22px,
+		inset #2E4053 0 0 0 23px;
 }
+
 
 .spacer{height:30px;}
 
-.row {
- margin:auto;	
- width:800px;
- height:400px;
- position:relative;
- overflow:hidden;
- background-color:#bfd5f1;
 }
 
-.container {
- margin:auto;	
- width:800px;
- height:400px;
- position:relative;
- overflow:hidden;
- background-color:#bfd5f1;
+#Instruct {
+	
+	color: white;
+}
+#topbar {
+ height:350px;
+ margin:auto;
+ margin-top:50px;
+ color:#FFF;
+ font-size:36px;
+ width:650px;
+ border-bottom:solid white 2px;
+ background-image: url("assets/images/wonder_woman.jpg");
+ background-repeat: no-repeat;
+}
 
+#replay{
+ margin-left:0px;}
+
+ #wordHolder{
+ margin-top:50px;
+ margin-left:150px;
+}
+
+#guesses{
+ margin-top:20px;
+ margin-left:150px;
+}
+
+
+.tile{
+ height:40px;
+ width:40px;
+ float:left;
+ margin-right:10px;
+ background-color:white;
+ text-align:center;
+ font-size:24px;
+ color:#333;
+ padding-top:5px;
+}
+
+.row {
+	margin: 0;
+	padding: 0;
+
+}
+
+body {
+	padding: 20px;
+	background-color: #F5B041;
+	font-size: 20px;
+	background-image: url(assets/images/lasso_of_truth.jpg);
+	background-repeat:  no-repeat; 	background-position:  bottom right;
 }
 
 footer {
-padding-right: 15px;
-padding-top: 35px;
-margin-bottom: 50px;
-text-align: center;
+	font-size: 15px;
+
+}
+
+
+.container{
+    display: grid;
+    width: 90%;
+    margin: 0 auto;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
+   }
+
+
+
+#right {
+    letter-spacing: 5px;
 }
