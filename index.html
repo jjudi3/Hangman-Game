@@ -1,36 +1,180 @@
 <!DOCTYPE html>
+<!-- saved from url=(0043)file:///D:/Hangman-Game/source/hangman.html -->
 <html>
-  <head>
-    <meta charset="UTF-8">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <title>Hangman</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="assets/css/style.css"> <!-- corrected path to where the file is==same directory as index-->
+<link href="./assets/class/bootstrap.min.css" rel="stylesheet"> <!--
+<link rel="stylesheet" type="text/css" href="./Hangman_files/style.css"> 
+<!corrected path to where the file is==same directory as index-->
 </head>
+<style type="text/css">
+
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}      
+
+html {
+  overflow-x: hidden; /* build a frame */
+  -webkit-box-shadow:
+    inset #DC7633 0 0 0 5px,
+    inset #18cdf7 0 0 0 1px,
+    inset #2E4053 0 0 0 10px,
+    inset #EBEDEF 0 0 0 11px,
+    inset #AEB6BF 0 0 0 16px,
+    inset #85929E 0 0 0 17px,
+    inset #5D6D7E 0 0 0 22px,
+    inset #2E4053 0 0 0 23px;
+  -moz-box-shadow:
+    inset #DC7633 0 0 0 5px,
+    inset #18cdf7 0 0 0 1px,
+    inset #2E4053 0 0 0 10px,
+    inset #EBEDEF 0 0 0 11px,
+    inset #AEB6BF 0 0 0 16px,
+    inset #85929E 0 0 0 17px,
+    inset #5D6D7E 0 0 0 22px,
+    inset #2E4053 0 0 0 23px;
+  box-shadow:
+    inset #DC7633 0 0 0 5px,
+    inset #18cdf7 0 0 0 1px,
+    inset #2E4053 0 0 0 10px,
+    inset #FFCA28 0 0 0 11px,
+    inset #AEB6BF 0 0 0 16px,
+    inset #85929E 0 0 0 17px,
+    inset #5D6D7E 0 0 0 22px,
+    inset #2E4053 0 0 0 23px;
+}
+
+body {
+  padding: 20px;
+  background-color: #929996;
+  font-size: 20px;
+  
+}
+
+#topbar {
+
+ height:350px;
+ margin:auto;
+ margin-top:25px;
+ background-image: url('wonder_woman.jpg');
+ background-repeat: no-repeat;
+ color:#FFF;
+ font-size:36px;
+ width:650px;
+ 
+}
+
+.container{
+    display: grid;
+    width: 95%;
+    height: 450px;
+    margin: 0 auto;
+    background-image:url(justiceleague.jpg);
+    background-repeat: no-repeat;
+    background-size: 900px 600px;
+    background-position: center;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
+   }
+
+.spacer{height:30px;}
+
+#replay{
+ margin-left:0px;}
+
+ #wordHolder{
+ margin-top:50px;
+ margin-left:150px;
+}
+
+#guesses{
+ margin-left:150px;
+ margin-top:20px;
+
+}
+
+/*
+.tile {
+ height:40px;
+ width:40px;
+ float:left;
+ margin-right:10px;
+ background-color:white;
+ text-align:center;
+ font-size:24px;
+ color:#333;
+ padding-top:5px;
+}  */
+/*
+.row {
+  margin: 0;
+  padding: 0;
+
+}
+*/
+
+
+.footer {
+    padding-left: 55px;
+    color: #ffffff;
+    text-align:center;
+    font-size: 12px;
+    padding: 15px;
+
+}
+
+
+
+
+#remain {
+	margin-left:50px;
+}
+
+#right {
+    letter-spacing: 5px;
+    margin-left: 50px;
+}
+#instruct {
+    font-size: 15px;
+     text-align: center;
+    padding-top: 4px;
+    }
+
+</style>
+
+
 <body>
-	<div id="topbar">Hangman Game</div>
+ 
+
+  <div id="topbar">Hangman Game</div>
+
+   <audio id="myTune">Wonder Woman Theme<source src="WWTheme.mp3">    
+   </audio>
 
     <div class="container">
       <div class="row">
         <div>
-          <h2>Guess the word:</h2>
-          <p id="right"></p>
+          <h2>  Guess the word:</h2>
+          <p id="right">___s_</p>
           <p>
-            <span id="remain">10</span> guesses remain
+            <span id="remain">8</span> guesses remain
           </p>
           <p id="wrong"></p>
         </div>
       </div>
     </div>
-    <div class="row"></div>
-    <div id="Instruct">
-     <p> This hangman game is about superheroes.  Guess which one it is.</p><p>   You have 9 tries to determine the superhero. If You want to play again, just reload the game.</p>
-    </div>
 
-    
+  <p id="instruct"><b>Guess the Superhero.  Type the letter and try and find the superhero listed. If you want to play again, reload the webpage.</p></b>
+
     <script type="text/javascript">
       var words = ['catwoman', 'wonderwoman', 'flash', 'aquaman', 'ironman', 'superman', 'batman'];
       var win = 0;
@@ -69,14 +213,14 @@
           if (this.$right.innerHTML.indexOf('_') < 0) {
             alert('you win!');
             this.complete = true;
-            
+             document.getElementById("myTune").play();
           }
         },
         wrong: function(letter) {
+          this.left--;
           this.guessed.push(letter);
           this.$wrong.innerHTML += ' ' + letter;
-          this.left--;
-
+          
           this.$remain.innerHTML = this.left;
 
           if (this.left < 1) {
@@ -95,9 +239,12 @@
         game.guess(letter);
       };
     </script>
-    	<footer>
-    			judiperez 2017
-    	</footer>
-  </body>
-</html>
 
+    	<div class="footer">
+    			judiperez 2017
+    	</div>
+  
+
+
+</body>
+</html>
